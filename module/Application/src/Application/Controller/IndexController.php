@@ -20,17 +20,22 @@ class IndexController extends AbstractActionController
         ->getServiceLocator()
         ->get('Doctrine\ORM\EntityManager');
 
-	  $user = new \Application\Entity\User();
-	  $user->setFullName('Dorin Chiran');
+       $repo = $objectManager->getRepository('\Application\Entity\User');
+       $users = $repo->findAll();
 
-	  $objectManager->persist($user);
-	  $objectManager->flush();
+       var_dump($users);
+
+	  // $user = new \Application\Entity\User();
+	  // $user->setFullName('John Doe');
+
+	  // $objectManager->persist($user);
+	  // $objectManager->flush();
 	  
-	  var_dump($user);
+	  // var_dump($user);
 
-	  var_dump($user->getFullName());
+	  // var_dump($user->getFullName());
        return new ViewModel(
-				array('user' => $user->getFullName())
+				array('users' => $users)
 			   );
     }
 }

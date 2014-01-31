@@ -3,7 +3,11 @@
 namespace Application\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
-/** @ORM\Entity */
+
+
+/**
+ * @ORM\Entity
+ */
 class User {
     /**
     * @ORM\Id
@@ -14,6 +18,8 @@ class User {
 
     /** @ORM\Column(type="string") */
     protected $fullName;
+
+
 
     public function getId(){
         return $this->id;
@@ -26,5 +32,6 @@ class User {
     public function setFullName($fullName){
         $this->fullName = $fullName;
     }
+
 
 }
